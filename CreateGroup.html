@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Title of the document</title>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script type="text/javascript">
+
+function onsubmitClicked(){
+		//alert("here");
+
+		var nameid=document.getElementById("nameid").value;
+		var desc=document.getElementById("desc").value
+		
+
+	$.ajax({type:"POST",url:"CreateGroupP.php",data:{create_group:1,text:nameid,desc:desc}}).done(
+	function(msg){
+
+	if(msg=="true")
+	{
+		alert("Group has been created successfully!");
+		window.open('StudentsInGroup.php', '_self');
+	}
+	else
+	{
+		alert("There is some problem with network connection. Please try again.");
+	}
+//	alert(msg);
+	
+});
+
+}
+</script> 
+   
+</head>
+
+<body   > <!--  #80ff00;">-->
+<table width='400' border='5' align='center'>
+	<tr>
+		<td colspan='2' align='center'>ADD GROUP NAME AND DESCRIPTION</td>
+		
+	</tr>
+	<tr>
+		<td align='center'>Group Name:</td>
+		<td align='center'>
+			<input id="nameid" type="text" name="text">
+		</td>	
+	</tr>
+	<tr>
+		<td align='center'>Group Description:</td>
+		<td align='center'>
+			<textarea id="desc"  name="desc" rows="5" cols="30" ></textarea>	
+		</td>
+	</tr>
+	<tr>
+		<td align='center' colspan='2'>
+			<input type="submit" name="submit" onclick="onsubmitClicked();" value="submit">
+		</td>
+	</tr>
+	
+	
+</table>
+
+
+</body>
+
+</html>

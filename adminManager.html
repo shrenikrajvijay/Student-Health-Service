@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Admin Manager</title>
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript">
+            $(function(){
+   getAdminList();
+})
+            function getAdminList()
+                {
+
+                        //var text = '';
+                    //var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+                    $.ajax({type: "POST",url: "adminManager.php",data: { AtPageLoad:''}}).done(
+                    function( msg ) 
+                    {
+                                document.getElementById("here").innerHTML = msg ;
+                        });
+                }
+        </script>
+    </head>
+    <body >
+        <div id="here" onactivate="getAdminList();">
+            
+        </div>
+    </body>
+</html>

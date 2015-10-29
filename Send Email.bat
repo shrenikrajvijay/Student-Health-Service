@@ -1,0 +1,1 @@
+C:\Users\K2U2>schtasks /create /tn "Drupal Cron Job" /tr "C:\xampp\php\php C:\xampp\htdocs\HealthCenter\university\university\emailqueue.php" /sc minute 

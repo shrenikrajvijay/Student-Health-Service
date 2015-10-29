@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Admin Information</title>
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript">
+            $(function(){
+            	//alert("Hi");
+                var id=myfunction();
+                getInfo(id);
+                
+            });
+            function getInfo(id)
+                {
+                	
+                	//alert("hi");
+                    $.ajax({type: "POST",url: "adminForm.php",data: { AtPageLoad:'',id:id}}).done(
+                    function( msg ) 
+                    {
+                    	document.getElementById("aName").innerHTML = msg ;
+                    });
+                }
+            
+                
+            function getQueryStrings() 
+            {
+    			//Holds key:value pairs
+    			var queryStringColl = null;
+            
+    			//Get querystring from url
+    			var requestUrl = window.location.search.toString();
+
+    			if (requestUrl != '') {
+        		//window.location.search returns the part of the URL 
+        		//that follows the ? symbol, including the ? symbol
+        		requestUrl = requestUrl.substring(1);
+
+        		queryStringColl = new Array();
+
+        		//Get key:value pairs from querystring
+        		var kvPairs = requestUrl.split('&');
+
+        		for (var i = 0; i < kvPairs.length; i++) {
+            	var kvPair = kvPairs[i].split('=');
+            	queryStringColl[kvPair[0]] = kvPair[1];
+        		}
+    		}
+
+    return queryStringColl;
+}
+
+function myfunction() {
+    var queryStringColl = getQueryStrings();
+
+    if (queryStringColl == null) {
+        //alert('no querystring found');
+        return;
+    }
+
+    return queryStringColl['id'];
+}
+
+
+
+        </script>
+        
+        <script type="text/javascript">
+        	function updateAdminInfo()
+{
+	//alert("hi");	
+	var id=myfunction();
+	var adname=document.getElementById("aname").value;
+	var adpass=document.getElementById("apass").value;
+	var adadd1=document.getElementById("aadd1").value;
+	var adadd2=document.getElementById("aadd2").value;
+	var adcity=document.getElementById("acity").value;
+	var adstate=document.getElementById("astate").value;
+	var adzip=document.getElementById("azip").value;
+	var ademail=document.getElementById("aemail").value;
+	var adphone=document.getElementById("aphone").value;
+	var adnote=document.getElementById("anote").value;
+	
+	var addob=document.getElementById("adob").value;
+	     
+	     //alert("hi");
+	$.ajax({type: "POST",url: "adminForm.php",data: { updateAdminInfo:'',id:id,adname:adname,adpass:adpass,adadd1:adadd1,adadd2:adadd2,adcity:adcity,adstate:adstate,adzip:adzip,ademail:ademail,adphone:adphone,adnote:adnote,addob:addob}}).done(
+                    function( msg ) 
+                    {
+                    	alert(msg);
+                    	//document.getElementById("aName").innerHTML = msg ;
+                    });
+}
+        	
+        </script>
+    </head>
+    <body >
+        <div id="aName" onactivate="getInfo();">
+                        
+        </div>
+    </body>
+</html>

@@ -1,0 +1,12 @@
+body{
+    background-color: #f0f8ff;
+}
+table, td, th {
+
+    border: 1px solid green;
+}
+
+th {
+    background-color: #f0f8ff;
+    color: white;
+}
